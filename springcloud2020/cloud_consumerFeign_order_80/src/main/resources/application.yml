@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud_consumerFeign_order_80
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      # defaultZone: http://localhost:7001/eureka/ #单点eureka配置,只注册到唯一的一个eurekaService
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #eureka集群配置,注册到多个eureka中
+
+ribbon:
+  ReadTimeout: 5000 # 建立连接后允许从服务器读取资源所用的时间
+  ConnectTimeout: 5000 # 建立连接允许使用的时间
+
+logging:
+  level:
+    #feign日志以什么级别监控那个接口
+    com.xsm.service.PaymentService: debug

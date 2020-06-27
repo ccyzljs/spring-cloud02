@@ -1,0 +1,3 @@
+com\xsm\ConsumerApplication.class
+com\xsm\controller\ConsumerController.class
+com\xsm\config\RestTemplateConfig.class

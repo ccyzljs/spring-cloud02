@@ -1,0 +1,22 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: payment_route # 路由的id,没有规定规则但要求唯一,建议配合服务名
+          #匹配后提供服务的路由地址
+          uri: http://localhost:8001
+          predicates:
+            - Path=/pay/hystrix/** # 断言，路径相匹配的进行路由
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/ #单点eureka配置,只注册到唯一的一个eurekaService
+      # defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/ #eureka集群配置,注册到多个eureka中
+
+
